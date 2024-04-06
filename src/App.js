@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import CompanyPanel from "./CompanyPanel/CompanyPanel";
+import Home from "./Screens/Home";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import CompareScreen from "./chartScreens/CompareScreen/CompareScreen";
 
 import "./App.css";
@@ -100,6 +102,12 @@ function App() {
 
   return (
     <>
+
+      <Router>
+        <Routes>
+        <Route path="/Home" element={<Home />} />
+        </Routes>
+        </Router>
       <div
         style={{
           width: "25%",
