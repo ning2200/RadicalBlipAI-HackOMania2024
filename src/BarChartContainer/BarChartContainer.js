@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
-  Rectangle,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -11,95 +10,47 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const BarChartContainer = () => {
+const BarChartContainer = ({ listOfCompanies=[], mockData = [] }) => {
+  const [dataToShow, setDataToShow] = useState([]);
 
-  const COLORS = [
-    "#B266FF",
-    '#9999FF',
-    '#CC0000',
+  const COLORS = ["#B266FF", "#9999FF", "#CC0000"];
 
-  ]
+  useEffect(() => {
+    const companiesToShow = listOfCompanies
+      .filter(company => company.selected)
+      .map(company => company.companyName);
+    const filteredData = mockData.filter(company =>
+      companiesToShow.includes(company.name)
+    );
+    setDataToShow(filteredData);
+  }, [listOfCompanies,mockData]);
 
-  const mockData = [
-    {
-      name: "Company A",
-      footPrintPerProduction: 4000,
-      carbonFootPrintPerRevenue: 2400,
-      carbonFootPrintPerEmployee: 2400,
-    },
-    {
-      name: "Company B",
-      footPrintPerProduction: 3000,
-      carbonFootPrintPerRevenue: 1398,
-      carbonFootPrintPerEmployee: 2210,
-    },
-    {
-      name: "Company C",
-      footPrintPerProduction: 2000,
-      carbonFootPrintPerRevenue: 9800,
-      carbonFootPrintPerEmployee: 2290,
-    },
-    {
-      name: "Company D",
-      footPrintPerProduction: 2780,
-      carbonFootPrintPerRevenue: 3908,
-      carbonFootPrintPerEmployee: 2000,
-    },
-    {
-      name: "Company E",
-      footPrintPerProduction: 1890,
-      carbonFootPrintPerRevenue: 4800,
-      carbonFootPrintPerEmployee: 2181,
-    },
-    {
-      name: "Company F",
-      footPrintPerProduction: 2390,
-      carbonFootPrintPerRevenue: 3800,
-      carbonFootPrintPerEmployee: 2500,
-    },
-    {
-      name: "Company G",
-      footPrintPerProduction: 3490,
-      carbonFootPrintPerRevenue: 4300,
-      carbonFootPrintPerEmployee: 2100,
-    },
-  ]
+  const formatYAxis = (tickItem) => `${tickItem / 1000}K`;
 
-  const barKeys = Object.keys(mockData[0]).filter(key => key !== 'name')
-
-  const formatYAxis = (tickItem) => {
-    return `${tickItem / 1000}K`;
+  // Dynamically generate Bar components based on dataToShow keys, excluding 'name'
+  const renderBars = () => {
+    if (dataToShow.length > 0) {
+      const barKeys = Object.keys(dataToShow[0]).filter(key => key !== 'name');
+      console.log(barKeys)
+      return barKeys.map((key, index) => (
+        <Bar key={key} dataKey={key} fill={COLORS[index % COLORS.length]} />
+      ));
+    }
+    return null;
   };
-
-
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <BarChart
-        height={300}
-        data={mockData}
-
-      >
+      <BarChart data={dataToShow}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis  tickFormatter={formatYAxis} />
+        <YAxis tickFormatter={formatYAxis} />
         <Tooltip />
         <Legend />
-        {barKeys.map((key,index) => (<Bar dataKey={key} fill={COLORS[index]}/>))}
+        {renderBars()}
       </BarChart>
     </ResponsiveContainer>
   );
 };
 
 export default BarChartContainer;
-
-
-        
-        {/* <Bar
-          dataKey="pv"
-          fill="#8884d8"
-        />
-        <Bar
-          dataKey="uv"
-          fill="#82ca9d"
-        /> */}

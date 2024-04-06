@@ -6,38 +6,87 @@ import "./App.css";
 
 function App() {
   const [shouldShow, setShouldShow] = useState(true);
-  const [mockData, setMockData] = useState([]);
-  const [selectedCompanies, setSelectedCompanies] = useState([]);
-  const [listOfCountries, setListOfCountires] = useState([
+  const [mockData, setMockData] = useState([
     {
-      conmapnyName: "Company A",
-      selected: false,
+      name: "Company A",
+      footPrintPerProduction: 4000,
+      carbonFootPrintPerRevenue: 2400,
+      carbonFootPrintPerEmployee: 2400,
     },
     {
-      conmapnyName: "Company B",
-      selected: false,
+      name: "Company B",
+      footPrintPerProduction: 3000,
+      carbonFootPrintPerRevenue: 1398,
+      carbonFootPrintPerEmployee: 2210,
     },
     {
-      conmapnyName: "Company C",
-      selected: false,
+      name: "Company C",
+      footPrintPerProduction: 2000,
+      carbonFootPrintPerRevenue: 9800,
+      carbonFootPrintPerEmployee: 2290,
     },
     {
-      conmapnyName: "Company D",
-      selected: false,
+      name: "Company D",
+      footPrintPerProduction: 2780,
+      carbonFootPrintPerRevenue: 3908,
+      carbonFootPrintPerEmployee: 2000,
     },
     {
-      conmapnyName: "Company E",
-      selected: false,
+      name: "Company E",
+      footPrintPerProduction: 1890,
+      carbonFootPrintPerRevenue: 4800,
+      carbonFootPrintPerEmployee: 2181,
     },
     {
-      conmapnyName: "Company F",
-      selected: false,
+      name: "Company F",
+      footPrintPerProduction: 2390,
+      carbonFootPrintPerRevenue: 3800,
+      carbonFootPrintPerEmployee: 2500,
     },
     {
-      conmapnyName: "Company G",
-      selected: false,
+      name: "Company G",
+      footPrintPerProduction: 3490,
+      carbonFootPrintPerRevenue: 4300,
+      carbonFootPrintPerEmployee: 2100,
     },
   ]);
+  const [listOfCompanies, setListOfCompanies] = useState([
+    {
+      companyName: "Company A",
+      selected: true,
+    },
+    {
+      companyName: "Company B",
+      selected: true,
+    },
+    {
+      companyName: "Company C",
+      selected: true,
+    },
+    {
+      companyName: "Company D",
+      selected: true,
+    },
+    {
+      companyName: "Company E",
+      selected: true,
+    },
+    {
+      companyName: "Company F",
+      selected: true,
+    },
+    {
+      companyName: "Company G",
+      selected: true,
+    },
+  ]);
+
+  const onCompanyClick = (companyName) => {
+      const copiedCompanies = [...listOfCompanies]
+      const companyToFind = copiedCompanies.find(company => company.companyName === companyName);
+      companyToFind.selected = !companyToFind.selected 
+      setListOfCompanies(copiedCompanies)
+  }
 
   return (
     <>
@@ -45,26 +94,42 @@ function App() {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <div
           style={{
-            background: "#F2F2F2",
             width: "60%",
             marginTop: "30px",
+            background: "#F2F2F2",
             padding: "30px",
             overflowX: "scroll",
             borderRadius: "5%",
             boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
           }}
         >
-          {shouldShow && <BarChartContainer />}
-          <CompanyPanel companylist={listOfCountries}
-            onCompanyClick={() => {}}
+          {shouldShow && <BarChartContainer 
+          listOfCompanies={listOfCompanies}
+          mockData={mockData}
+          />}
+        </div>
+        <div
+          style={{
+            background: "#F2F2F2",
+            width:'25%',
+            padding: '30px',
+            display:'flex',
+            marginTop: "30px",
+            borderRadius: "5%",
+            flexDirection:'column',
+            boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
+            marginLeft:'20px'
+          }}
+        >
+          <CompanyPanel
+            companylist={listOfCompanies}
+            onCompanyClick={onCompanyClick}
           />
         </div>
-        <div></div>
       </div>
     </>
   );
