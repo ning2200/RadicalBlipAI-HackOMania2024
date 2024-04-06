@@ -8,6 +8,7 @@ import EcoLogo from './Images/EcoLogo.png';
 import SearchIcon from './Images/SearchIcon.png';
 
 import "./App.css";
+import OverviewScreen from "./chartScreens/CompareScreen/OverviewScreen";
 
 function App() {
   const [shouldShow, setShouldShow] = useState(true);
@@ -173,7 +174,7 @@ function App() {
           justifyContent: "center",
           height: "75vh"
         }}
-      >
+      > 
         <CompareScreen
           selectedButton={selectedButton}
           onCompanyClick={onCompanyClick}

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import CompareCompanies from "../../Charts/CompareCompanies/CompareCompanies";
 import ComparePieChart from "../../Charts/ComparePieChart/ComparePieChart";
+import OverviewScreen from "./OverviewScreen";
 
 const CompareScreen = ({
   listOfCompanies,
@@ -89,6 +90,12 @@ const CompareScreen = ({
               ))}
             </div>
           </div>
+        </>
+      );
+    } else if (view === "Overview") {
+      return (
+        <>
+       <OverviewScreen/>
         </>
       );
     }
