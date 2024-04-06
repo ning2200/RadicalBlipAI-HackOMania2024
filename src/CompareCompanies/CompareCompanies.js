@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const BarChartContainer = ({ listOfCompanies=[], mockData = [] }) => {
+const CompareCompanies = ({ listOfCompanies=[], mockData = [] }) => {
   const [dataToShow, setDataToShow] = useState([]);
 
   const COLORS = ["#B266FF", "#9999FF", "#CC0000"];
@@ -31,7 +31,6 @@ const BarChartContainer = ({ listOfCompanies=[], mockData = [] }) => {
   const renderBars = () => {
     if (dataToShow.length > 0) {
       const barKeys = Object.keys(dataToShow[0]).filter(key => key !== 'name');
-      console.log(barKeys)
       return barKeys.map((key, index) => (
         <Bar key={key} dataKey={key} fill={COLORS[index % COLORS.length]} />
       ));
@@ -53,4 +52,4 @@ const BarChartContainer = ({ listOfCompanies=[], mockData = [] }) => {
   );
 };
 
-export default BarChartContainer;
+export default CompareCompanies;

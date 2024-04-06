@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import BarChartContainer from "./BarChartContainer/BarChartContainer";
+import { Button } from "antd";
 import CompanyPanel from "./CompanyPanel/CompanyPanel";
+import CompareScreen from "./chartScreens/CompareScreen/CompareScreen";
 
 import "./App.css";
 
@@ -81,48 +82,68 @@ function App() {
     },
   ]);
 
+  const [buttonView, setListOfButtonView] = useState([
+    "Overview",
+    "GHG Emissions",
+    "Compare",
+  ]);
+  const [selectedButton, setSelectedButton] = useState("Overview");
+
   const onCompanyClick = (companyName) => {
-      const copiedCompanies = [...listOfCompanies]
-      const companyToFind = copiedCompanies.find(company => company.companyName === companyName);
-      companyToFind.selected = !companyToFind.selected 
-      setListOfCompanies(copiedCompanies)
-  }
+    const copiedCompanies = [...listOfCompanies];
+    const companyToFind = copiedCompanies.find(
+      (company) => company.companyName === companyName
+    );
+    companyToFind.selected = !companyToFind.selected;
+    setListOfCompanies(copiedCompanies);
+  };
 
   return (
     <>
+      <div
+        style={{
+          width: "25%",
+          display: "flex",
+          marginLeft: "30px",
+          marginTop: "30px",
+          justifyContent: "space-between",
+        }}
+      >
+        {buttonView.map((button) => (
+          <Button
+          shape="round" 
+            onClick={() => setSelectedButton(button)}
+            style={{
+              color: selectedButton === button ? "white" : "",
+              background: selectedButton === button ? "#565656" : "#E6E6E6",
+            }}
+          >
+            {button}
+          </Button>
+        ))}
+      </div>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
         }}
       >
-        <div
-          style={{
-            width: "60%",
-            marginTop: "30px",
-            background: "#F2F2F2",
-            padding: "30px",
-            overflowX: "scroll",
-            borderRadius: "5%",
-            boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
-          }}
-        >
-          {shouldShow && <BarChartContainer 
+        <CompareScreen
+          onCompanyClick={onCompanyClick}
           listOfCompanies={listOfCompanies}
           mockData={mockData}
-          />}
-        </div>
+        />
         <div
           style={{
             background: "#F2F2F2",
-            width:'25%',
-            padding: '30px',
-            display:'flex',
+            width: "25%",
+            padding: "30px",
+            display: "flex",
             marginTop: "30px",
             borderRadius: "5%",
-            flexDirection:'column',
+            flexDirection: "column",
             boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
-            marginLeft:'20px'
+            marginLeft: "20px",
           }}
         >
           <CompanyPanel
