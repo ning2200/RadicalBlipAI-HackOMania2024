@@ -8,11 +8,12 @@ const CompanyPanel = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          paddingTop: "20px"
         }}
       >
-        <div style={{ fontSize: "20px" }}>Have a question?</div>
+        <div style={{ fontSize: "18px", fontWeight:"500", fontFamily:"Raleway", marginBottom: "10px"}}>Have a question?</div>
         <div
-          style={{ fontSize: "12px", marginTop: "8px", fontWeight: "medium" }}
+          style={{ fontSize: "12px", fontWeight:"400", fontFamily:"Raleway" }}
         >
           Feel free to ask our AI anything about carbon emissions
         </div>

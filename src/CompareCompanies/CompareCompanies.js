@@ -39,13 +39,13 @@ const CompareCompanies = ({ listOfCompanies=[], mockData = [] }) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={320}>
       <BarChart data={dataToShow}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis tickFormatter={formatYAxis} />
+        <XAxis dataKey="name" fontWeight="500" fontFamily="Raleway" fontSize="13px" />
+        <YAxis fontWeight="500" fontFamily="Raleway" fontSize="13px" tickFormatter={formatYAxis} />
         <Tooltip />
-        <Legend />
+        <Legend wrapperStyle={{lineHeight: '40px', fontWeight:"400", fontFamily:"Poppins", fontSize:"13px"}}/>
         {renderBars()}
       </BarChart>
     </ResponsiveContainer>

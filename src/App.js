@@ -4,6 +4,8 @@ import CompanyPanel from "./CompanyPanel/CompanyPanel";
 import Home from "./Screens/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import CompareScreen from "./chartScreens/CompareScreen/CompareScreen";
+import EcoLogo from './Images/EcoLogo.png';
+import SearchIcon from './Images/SearchIcon.png';
 
 import "./App.css";
 
@@ -46,12 +48,12 @@ function App() {
       carbonFootPrintPerRevenue: 3800,
       carbonFootPrintPerEmployee: 2500,
     },
-    {
-      name: "Company G",
-      footPrintPerProduction: 3490,
-      carbonFootPrintPerRevenue: 4300,
-      carbonFootPrintPerEmployee: 2100,
-    },
+    // {
+    //   name: "Company G",
+    //   footPrintPerProduction: 3490,
+    //   carbonFootPrintPerRevenue: 4300,
+    //   carbonFootPrintPerEmployee: 2100,
+    // },
   ]);
   const [listOfCompanies, setListOfCompanies] = useState([
     {
@@ -78,10 +80,10 @@ function App() {
       companyName: "Company F",
       selected: true,
     },
-    {
-      companyName: "Company G",
-      selected: true,
-    },
+    // {
+    //   companyName: "Company G",
+    //   selected: true,
+    // },
   ]);
 
   const [buttonView, setListOfButtonView] = useState([
@@ -108,13 +110,44 @@ function App() {
         <Route path="/Home" element={<Home />} />
         </Routes>
         </Router>
+        <div style={{
+              width: "100vw",
+              height: "10vh",
+          }}>
+        <div style={{
+              marginTop: "25px",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+          }}>
+        <img style={{
+              height: "50px",
+          }} src={EcoLogo} alt="Eco Logo" />
+        <div style={{
+              backgroundColor: '#EAEAEA',
+              width: "80vw",
+              borderRadius: "50px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+          }}>
+            <h3 style={{ marginLeft: '25px', color: 'B4B4B4', fontFamily: 'Raleway, sans-serif', fontWeight: "400", fontSize: "13px" }}>What company do you want to check?</h3>
+            <img style={{
+              height: "30px",
+              marginRight: '25px'
+          }} src={SearchIcon} alt="Search Icon" />
+          </div>
+          
+        </div>
+      </div>
       <div
         style={{
           width: "25%",
+          height: "8vh",
           display: "flex",
-          marginLeft: "30px",
-          marginTop: "30px",
           justifyContent: "space-between",
+          marginLeft: "80px",
+          marginTop: "10px"
         }}
       >
         {buttonView.map((button) => (
@@ -123,7 +156,11 @@ function App() {
             onClick={() => setSelectedButton(button)}
             style={{
               color: selectedButton === button ? "white" : "",
-              background: selectedButton === button ? "#565656" : "#E6E6E6",
+              background: selectedButton === button ? "#5C5C5C" : "#E6E6E6",
+              height: "40px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              fontFamily: 'Poppins, sans-serif', fontWeight: "400", fontSize: "13px"
             }}
           >
             {button}
@@ -134,6 +171,7 @@ function App() {
         style={{
           display: "flex",
           justifyContent: "center",
+          height: "75vh"
         }}
       >
         <CompareScreen
@@ -145,13 +183,14 @@ function App() {
           style={{
             background: "#F2F2F2",
             width: "25%",
-            padding: "30px",
+            // padding: "30px",
             display: "flex",
-            marginTop: "30px",
+            // marginTop: "30px",
             borderRadius: "5%",
             flexDirection: "column",
             boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
             marginLeft: "20px",
+            height: "75vh"
           }}
         >
           <CompanyPanel
