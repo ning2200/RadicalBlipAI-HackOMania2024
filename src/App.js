@@ -175,6 +175,7 @@ function App() {
         }}
       >
         <CompareScreen
+          selectedButton={selectedButton}
           onCompanyClick={onCompanyClick}
           listOfCompanies={listOfCompanies}
           mockData={mockData}
