@@ -1,9 +1,68 @@
-import transparent from "/Users/jyen/Documents/SEI/hackathon/hackOManiaCarbon/src/Images/transparent.png";
-import BioSuisse from "/Users/jyen/Documents/SEI/hackathon/hackOManiaCarbon/src/Images/EcoLabels/BioSuisse.png";
-import BioSuisseX from "/Users/jyen/Documents/SEI/hackathon/hackOManiaCarbon/src/Images/EcoLabels/BioSuisseX.png";
 
+import React, {useState} from 'react'
+import {Select} from "antd"
+import transparent from "./../../Images/transparent.png";
+import BioSuisse from "../../Images/EcoLabels/BioSuisse.png";
+import BioSuisseX from "../../Images//EcoLabels/BioSuisseX.png";
+import OverviewChart from "../../Charts/OverviewChart/OverviewChart";
 
 const OverviewScreen = () => {
+  const overView = {
+    footPrintPerProduction: {
+      2020: {
+        total: 4144,
+      },
+      2021: {
+        total: 2421,
+      },
+      2022: {
+        total: 1414,
+      },
+    },
+    carbonFootPrintPerRevenue: {
+      2020: {
+        total: 4114,
+      },
+      2021: {
+        total: 3121,
+      },
+      2022: {
+        total: 1411,
+      },
+    },
+    carbonFootPrintPerEmployee: {
+      2020: {
+        total: 4114,
+      },
+      2021: {
+        total: 5211,
+      },
+      2022: {
+        total: 1411,
+      },
+    },
+  };
+
+  const [selectedOverview, setSelectedOverview] = useState('footPrintPerProduction')
+
+  function convertOverview(overView) {
+    const overView2 = {};
+  
+    Object.keys(overView).forEach((key) => {
+      const currentObject = overView[key];
+      
+      overView2[key] = Object.keys(currentObject).map((year) => ({
+        name: parseInt(year),
+        total: currentObject[year].total, 
+      }));
+    });
+  
+    return overView2;
+  }
+
+  const overViewObject = convertOverview(overView)
+  console.log(overViewObject)
+
   return (
     <>
       <div
@@ -112,43 +171,56 @@ const OverviewScreen = () => {
         style={{
           display: "flex",
           justifyContent: "flex-start",
-          flexDirection: "row",
-          height: "67%",
-          alignItems: "center",
-          paddingLeft: "20px",
-          backgroundColor: "pink",
-        }}
-      ></div>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
           flexDirection: "column",
           height: "20%",
           alignItems: "flex-start",
           paddingLeft: "40px",
-          paddingTop: "20px"
+          paddingTop: "20px",
         }}
       >
-        <h2 style={{
+        <Select
+          style={{marginLeft:'auto'}}
+          value={selectedOverview}
+          onChange={(value) => setSelectedOverview(value)}
+        >
+          {["footPrintPerProduction", "carbonFootPrintPerRevenue", "carbonFootPrintPerEmployee"]
+            .map(key => <Select.Option value={key}>{key}</Select.Option>)
+          } 
+        </Select>
+        <OverviewChart data={overViewObject[selectedOverview]}/>
+        <h2
+          style={{
             color: "#524E4E",
             fontFamily: "Poppins, sans-serif",
             fontWeight: "400",
             fontSize: "14px",
-          }}>Eco Labels</h2>
-        <div style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          flexDirection: "row"}}>
-            <img style={{
-            height: "50px",
-            paddingLeft: "10px"
-        }} src={BioSuisse} alt="BioSuisse" />
-        <img style={{
-            height: "50px",
-            paddingLeft: "10px"
-        }} src={BioSuisseX} alt="BioSuisseX" />
+          }}
+        >
+          Eco Labels
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            flexDirection: "row",
+          }}
+        >
+          <img
+            style={{
+              height: "50px",
+              paddingLeft: "10px",
+            }}
+            src={BioSuisse}
+            alt="BioSuisse"
+          />
+          <img
+            style={{
+              height: "50px",
+              paddingLeft: "10px",
+            }}
+            src={BioSuisseX}
+            alt="BioSuisseX"
+          />
         </div>
       </div>
     </>

@@ -8,7 +8,6 @@ import EcoLogo from './Images/EcoLogo.png';
 import SearchIcon from './Images/SearchIcon.png';
 
 import "./App.css";
-import OverviewScreen from "./chartScreens/CompareScreen/OverviewScreen";
 
 function App() {
   const [shouldShow, setShouldShow] = useState(true);
@@ -49,12 +48,6 @@ function App() {
       carbonFootPrintPerRevenue: 3800,
       carbonFootPrintPerEmployee: 2500,
     },
-    // {
-    //   name: "Company G",
-    //   footPrintPerProduction: 3490,
-    //   carbonFootPrintPerRevenue: 4300,
-    //   carbonFootPrintPerEmployee: 2100,
-    // },
   ]);
   const [listOfCompanies, setListOfCompanies] = useState([
     {
@@ -185,9 +178,7 @@ function App() {
           style={{
             background: "#F2F2F2",
             width: "25%",
-            // padding: "30px",
             display: "flex",
-            // marginTop: "30px",
             borderRadius: "5%",
             flexDirection: "column",
             boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
