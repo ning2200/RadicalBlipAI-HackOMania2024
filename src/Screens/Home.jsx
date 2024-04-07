@@ -106,14 +106,23 @@ const Home = ({onQuerySearch}) => {
             disablePortal
             id="company-autocomplete"
             options={listOfCompanies}
+            onKeyDown= {(event) => {
+              if(event.key === 'Enter'){
+                onQuerySearch(event.target.value)
+                setTextInput("")
+              }
+            }}
             sx={{ width: 800 }}
             
             renderInput={(params) => (
               <TextField
                 value={textInput}
                 onChange={(event) => {
-                  event.preventDefault()
-                  setTextInput(event.target.value)
+                  if(event.key === 'Enter'){
+                    event.preventDefault()
+                    onQuerySearch(event.target.value)
+                    setTextInput("")
+                  }
                 }}
                 placeholder="What company do you want to check?"
                 {...params}

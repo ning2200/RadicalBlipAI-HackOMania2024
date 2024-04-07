@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Empty } from "antd";
 import {
   BarChart,
   Bar,
@@ -37,7 +38,10 @@ const CompareCompanies = ({ listOfCompanies , mockData  }) => {
     return null;
   };
 
+  
   return (
+    dataToShow.length === 0 ? <Empty 
+    /> : 
     <ResponsiveContainer width="100%" height={320}>
       <BarChart data={dataToShow}>
         <CartesianGrid strokeDasharray="3 3" />

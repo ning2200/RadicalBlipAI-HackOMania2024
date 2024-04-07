@@ -3,14 +3,12 @@ import React, {useState} from 'react'
 import {Select} from "antd"
 import transparent from "./../../Images/transparent.png";
 import BioSuisse from "../../Images/EcoLabels/BioSuisse.png";
-import BioSuisseX from "../../Images//EcoLabels/BioSuisseX.png";
 import CarbonNeutral from "../../Images/EcoLabels/CarbonNeutral.png";
-import CarbonNeutralX from "../../Images/EcoLabels/CarbonNeutralX.png";
-import Organic from "../../Images/EcoLabels/Organic.png";
 import OrganicX from "../../Images/EcoLabels/OrganicX.png";
 import OverviewChart from "../../Charts/OverviewChart/OverviewChart";
+import searchJSON from '../../companiesSearch.json'
 
-const OverviewScreen = () => {
+const OverviewScreen = ({homeSearchQuery}) => {
   const overView = {
     footPrintPerProduction: {
       2020: {
@@ -66,6 +64,14 @@ const OverviewScreen = () => {
 
   const overViewObject = convertOverview(overView)
 
+  const getBrandReputation = () => {
+    const company = searchJSON.find(data => data.name === homeSearchQuery)
+    if(company){
+      return <div>{company.brandReputation}</div>
+    }
+    return 'Apple prioritizes reducing carbon emissions, commits to sustainability, and leads in innovation.'
+  }
+
   return (
     <>
       <div
@@ -93,7 +99,7 @@ const OverviewScreen = () => {
               fontSize: "20px",
             }}
           >
-            Apple Inc.
+            {homeSearchQuery ? homeSearchQuery : 'Apple Inc.' }
           </h2>
           <img
             style={{
@@ -163,10 +169,13 @@ const OverviewScreen = () => {
             fontFamily: "Raleway, sans-serif",
             fontWeight: "400",
             fontSize: "13px",
+            marginTop:'50px',
+            maxWidth:'650px',
+            height:'50px',
+            overflowY:'scroll'
           }}
         >
-          Apple prioritizes reducing carbon emissions, commits to
-          sustainability, and leads in innovation.
+          {getBrandReputation()}
         </p>
       </div>
 

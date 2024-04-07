@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Button, Spin, Flex } from "antd";
+import { Button, Spin } from "antd";
 import CompanyPanel from "./CompanyPanel/CompanyPanel";
 import Home from "./Screens/Home";
 import CompareScreen from "./chartScreens/CompareScreen/CompareScreen";
 import companiesSearch from "./companiesSearch.json";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 import EcoLogo from "./Images/EcoLogo.png";
-import SearchIcon from "./Images/SearchIcon.png";
 
 import "./App.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
+  const [textInput,setTextInput] = useState("")
   const [mockData, setMockData] = useState([
     {
       name: "Company A",
@@ -86,6 +88,9 @@ function App() {
 
   const [homeSearchQuery, setHomeSearchQuery] = useState("");
 
+  const companiesSearchList = companiesSearch.map((company) => company.name);
+
+
   const onCompanyClick = (companyName) => {
     const copiedCompanies = [...listOfCompanies];
     const companyToFind = copiedCompanies.find(
@@ -116,12 +121,6 @@ function App() {
             footPrintPerProduciton,
             name,
           } = data;
-          console.log({
-            name: name,
-            carbonFootPrintPerEmployee: carbonFootPrintPerEmployee[0].total,
-            carbonFootPrintPerRevenue: carbonFootPrintPerRevenue[0].total,
-            footPrintPerProduciton: footPrintPerProduciton,
-          });
           return {
             name: name,
             carbonFootPrintPerEmployee: carbonFootPrintPerEmployee[0].total,
@@ -148,20 +147,20 @@ function App() {
             height: "100vh",
             display: "flex",
             justifyContent: "center",
-            flexDirection: "column",
             alignItems: "center",
           }}
         >
           <Spin
-            tip="Loading"
+            tip="Loading..."
             size="large"
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              
             }}
           >
-            <div className="content" />
+            <div className="content" style={{marginRight: '50px', marginTop: '20px'}}/>
           </Spin>
         </div>
       );
@@ -191,34 +190,52 @@ function App() {
                     src={EcoLogo}
                     alt="Eco Logo"
                   />
+
                   <div
                     style={{
-                      backgroundColor: "#EAEAEA",
-                      width: "80vw",
-                      borderRadius: "50px",
                       display: "flex",
-                      justifyContent: "space-between",
+                      height: "10%",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
-                    <h3
-                      style={{
-                        marginLeft: "25px",
-                        color: "B4B4B4",
-                        fontFamily: "Raleway, sans-serif",
-                        fontWeight: "400",
-                        fontSize: "13px",
+                    <Autocomplete
+                      disablePortal
+                      id="company-autocomplete"
+                      options={companiesSearchList}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          onQuerySearch(event.target.value);
+                          setTextInput("");
+                          setSelectedButton("Overview")
+                        }
                       }}
-                    >
-                      What company do you want to check?
-                    </h3>
-                    <img
-                      style={{
-                        height: "30px",
-                        marginRight: "25px",
-                      }}
-                      src={SearchIcon}
-                      alt="Search Icon"
+                      sx={{ width: 1200 }}
+                      renderInput={(params) => (
+                        <TextField
+                          value={textInput}
+                          onChange={(event) => {
+                            if (event.key === "Enter") {
+                              event.preventDefault();
+                              onQuerySearch(event.target.value);
+                              setTextInput("");
+                              setSelectedButton("Overview")
+
+                            }
+                          }}
+                          placeholder="What company do you want to check?"
+                          {...params}
+                          onKeyDown={(event) => {
+                            if (event.key === "Enter") {
+                              onQuerySearch(textInput);
+                              setTextInput("");
+                              setSelectedButton("Overview")
+
+                            }
+                          }}
+                          label="Company"
+                        />
+                      )}
                     />
                   </div>
                 </div>
@@ -261,6 +278,7 @@ function App() {
                 }}
               >
                 <CompareScreen
+                  homeSearchQuery={homeSearchQuery}
                   selectedButton={selectedButton}
                   onCompanyClick={onCompanyClick}
                   listOfCompanies={listOfCompanies}
