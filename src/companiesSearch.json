@@ -90,7 +90,7 @@
     {
       "name": "Oracle",
       "footPrintPerProduciton" : 45,
-      "FootPrintPerRevenue": [
+      "carbonFootPrintPerRevenue": [
         { "name": 2020, "total": 28 },
         { "name": 2021, "total": 30 },
         { "name": 2022, "total": 34 }
@@ -133,7 +133,7 @@
     },
     {
       "name": "IBM",
-      "FootPrintPerRevenue": [
+      "carbonFootPrintPerRevenue": [
         { "name": 2020, "total": 18 },
         { "name": 2021, "total": 7 },
         { "name": 2022, "total": 7 }
@@ -177,7 +177,8 @@
     },
     {
       "name": "Accenture",
-      "FootPrintPerRevenue": [
+      "footPrintPerProduciton" : 95,
+      "carbonFootPrintPerRevenue": [
         { "name": 2020, "total": 46 },
         { "name": 2021, "total": 6 },
         { "name": 2022, "total": 6 }
@@ -221,7 +222,7 @@
     {
       "name": "Qualcomm",
       "footPrintPerProduciton" : 95,
-      "FootPrintPerRevenue": [
+      "carbonFootPrintPerRevenue": [
         { "name": 2020, "total": 86 },
         { "name": 2021, "total": 112 },
         { "name": 2022, "total": 162 }

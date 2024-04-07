@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Input, Button } from "antd";
 import axios from "axios";
+import companiesSearch from '../companiesSearch.json'
 
 const { TextArea } = Input;
 
@@ -11,12 +12,13 @@ const CompanyPanel = () => {
   const sendMessage = async () => {
     if (input.trim() === "") return;
 
+    const text = JSON.stringify(companiesSearch) + input;
     // Make a request to the ChatGPT API
     try {
       const response = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          messages: [{ role: "user", content: input }],
+          messages: [{ role: "user", content: text }],
           model: "gpt-4",
           max_tokens: 50,
           temperature: 0.7,

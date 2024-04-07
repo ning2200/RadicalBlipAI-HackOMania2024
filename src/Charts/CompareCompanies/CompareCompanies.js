@@ -27,7 +27,6 @@ const CompareCompanies = ({ listOfCompanies , mockData  }) => {
 
   const formatYAxis = (tickItem) => `${tickItem / 1000}K`;
 
-  // Dynamically generate Bar components based on dataToShow keys, excluding 'name'
   const renderBars = () => {
     if (dataToShow.length > 0) {
       const barKeys = Object.keys(dataToShow[0]).filter(key => key !== 'name');

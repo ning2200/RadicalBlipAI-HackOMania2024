@@ -52,27 +52,27 @@ function App() {
   ]);
   const [listOfCompanies, setListOfCompanies] = useState([
     {
-      companyName: "Company A",
+      companyName: "Alphabet",
       selected: true,
     },
     {
-      companyName: "Company B",
+      companyName: "Microsoft",
       selected: true,
     },
     {
-      companyName: "Company C",
+      companyName: "Oracle",
       selected: true,
     },
     {
-      companyName: "Company D",
+      companyName: "IBM",
       selected: true,
     },
     {
-      companyName: "Company E",
+      companyName: "Accenture",
       selected: true,
     },
     {
-      companyName: "Company F",
+      companyName: "Qualcomm",
       selected: true,
     },
   ]);
@@ -114,8 +114,14 @@ function App() {
             carbonFootPrintPerEmployee,
             carbonFootPrintPerRevenue,
             footPrintPerProduciton,
-            name
+            name,
           } = data;
+          console.log({
+            name: name,
+            carbonFootPrintPerEmployee: carbonFootPrintPerEmployee[0].total,
+            carbonFootPrintPerRevenue: carbonFootPrintPerRevenue[0].total,
+            footPrintPerProduciton: footPrintPerProduciton,
+          });
           return {
             name: name,
             carbonFootPrintPerEmployee: carbonFootPrintPerEmployee[0].total,
@@ -123,7 +129,6 @@ function App() {
             footPrintPerProduciton: footPrintPerProduciton,
           };
         });
-        console.log(mockDataResponse)
         setMockData(mockDataResponse);
       } catch (error) {
       } finally {
