@@ -13,7 +13,7 @@ import {
 const CompareCompanies = ({ listOfCompanies , mockData  }) => {
   const [dataToShow, setDataToShow] = useState([]);
 
-  const COLORS = ["#B266FF", "#9999FF", "#CC0000"];
+  const COLORS = ["#1D66F4", "#F48401", "#F24242"];
 
   useEffect(() => {
     const companiesToShow = listOfCompanies

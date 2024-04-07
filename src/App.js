@@ -98,12 +98,7 @@ function App() {
 
   return (
     <>
-
-      <Router>
-        <Routes>
-        <Route path="/Home" element={<Home />} />
-        </Routes>
-        </Router>
+        <Home />
         <div style={{
               width: "100vw",
               height: "10vh",

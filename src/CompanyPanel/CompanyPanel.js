@@ -52,16 +52,17 @@ const CompanyPanel = () => {
       >
         <div
           style={{
-            fontSize: "18px",
+            fontSize: "15px",
             fontWeight: "500",
-            fontFamily: "Raleway",
+            fontFamily: "Poppins",
             marginBottom: "10px",
+            color: "#565656"
           }}
         >
           Have a question?
         </div>
         <div
-          style={{ fontSize: "12px", fontWeight: "400", fontFamily: "Raleway" }}
+          style={{ color: "#565656", fontSize: "11px", fontWeight: "400", fontFamily: "Poppins" }}
         >
           Feel free to ask our AI anything about carbon emissions
         </div>
@@ -72,13 +73,15 @@ const CompanyPanel = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          marginLeft: "20px",
+          marginRight: "20px"
         }}
       >
         <div>
           {messages.map((message, index) => (
-            <div key={index} className={message.type}>
+            <div style={{wordWrap: "break-word", borderRadius: "15px", padding: "15px", fontFamily: "Poppins", fontWeight: "400", fontSize: "12px", backgroundColor: "#E6E6E6", marginTop: "10px", marginBottom: "10px"}} key={index} className={message.type}>
               {message.text}
-            </div>
+            </div> 
           ))}
         </div>
         <TextArea
@@ -87,7 +90,7 @@ const CompanyPanel = () => {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type your message..."
         />
-        <Button onClick={sendMessage} primary>
+        <Button style={{fontFamily: "Poppins", fontWeight: "400", fontSize: "12px", backgroundColor: "#E6E6E6", marginTop: "10px"}} onClick={sendMessage} primary>
           Submit
         </Button>
       </div>
