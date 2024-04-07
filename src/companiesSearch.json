@@ -1,0 +1,266 @@
+[
+    {
+      "name": "Alphabet",
+      "carbonFootPrintPerRevenue": [
+        { "name": 2020, "total": 61 },
+        { "name": 2021, "total": 63 },
+        { "name": 2022, "total": 56 }
+      ],
+      "carbonFootPrintPerEmployee": [
+        { "name": 2020, "total": 113 },
+        { "name": 2021, "total": 103 },
+        { "name": 2022, "total": 83 }
+      ],
+      "footPrintPerProduciton" : 85,
+      "ghgCarbonEmission": [
+        {
+          "name": 2020,
+          "total": 15279694,
+          "operation": 38694,
+          "energy": 5865000,
+          "valueChain": 9376000
+        },
+        {
+          "name": 2021,
+          "total": 16124300,
+          "operation": 45100,
+          "energy": 6576200,
+          "valueChain": 9503000
+        },
+        {
+          "name": 2022,
+          "total": 15736600,
+          "operation": 91200,
+          "energy": 8045400,
+          "valueChain": 7600000
+        }
+      ],
+      "brandReputation": "Alphabet, the parent company of Google, is recognized for its strong brand awareness and reputation as an innovative company, due in part to its dominant presence in web search, digital advertising, and mobile OS markets. The company's strengths include a vast amount of user data through its products, excellent acquisition capabilities, and significant investments in R&D, resulting in a large patent portfolio and competitive advantage in technology innovation. However, Alphabet faces challenges such as reliance on advertising revenue, criticism over privacy concerns, and legal issues related to patent and copyright infringement",
+      "transparencyLabel": true,
+      "ecoLabel": {
+        "label1": true,
+        "label2": false,
+        "label3": true
+      }
+    },
+    {
+      "name": "Microsoft",
+      "footPrintPerProduciton" : 90,
+      "carbonFootPrintPerRevenue": [
+        { "name": 2020, "total": 112 },
+        { "name": 2021, "total": 103 },
+        { "name": 2022, "total": 110 }
+      ],
+      "carbonFootPrintPerEmployee": [
+        { "name": 2020, "total": 83 },
+        { "name": 2021, "total": 86 },
+        { "name": 2022, "total": 103 }
+      ],
+      "ghgCarbonEmission": [
+        {
+          "name": 2020,
+          "total": 15037806,
+          "operation": 91200,
+          "energy": 8045400,
+          "valueChain": 7600000
+        },
+        {
+          "name": 2021,
+          "total": 18973371,
+          "operation": 123704,
+          "energy": 5010667,
+          "valueChain": 13839000
+        },
+        {
+          "name": 2022,
+          "total": 22860663,
+          "operation": 139413,
+          "energy": 6381250,
+          "valueChain": 16340000
+        }
+      ],
+      "brandReputation": "Microsoft has a strong and valuable brand reputation. In 2024, it was recognized for having a \"Strong Reputation\" and ranked highly in the Software Publishing industry, placing in the top 7% with an overall assessment score of 64, and in the 84th percentile​ (Microsoft)​. Additionally, Microsoft has consistently been acknowledged for its efforts in corporate social responsibility (CSR), including its sustainability initiatives. The company has been included in the Dow Jones Sustainability Indices, demonstrating its commitment to environmental, social, and governance (ESG) standards. Microsoft aims to become carbon negative, water positive, and zero waste by 2030, showing a strong commitment to sustainability​ ",
+      "transparencyLabel": true,
+      "ecoLabel": {
+        "label1": true,
+        "label2": false,
+        "label3": true
+      }
+    },
+    {
+      "name": "Oracle",
+      "footPrintPerProduciton" : 45,
+      "FootPrintPerRevenue": [
+        { "name": 2020, "total": 28 },
+        { "name": 2021, "total": 30 },
+        { "name": 2022, "total": 34 }
+      ],
+      "carbonFootPrintPerEmployee": [
+        { "name": 2020, "total": 83 },
+        { "name": 2021, "total": 86 },
+        { "name": 2022, "total": 103 }
+      ],
+      "ghgCarbonEmission": [
+        {
+          "name": 2020,
+          "total": 2006753,
+          "operation": 10300,
+          "energy": 419277,
+          "valueChain": 1577176
+        },
+        {
+          "name": 2021,
+          "total": 1237346,
+          "operation": 9489,
+          "energy": 647826,
+          "valueChain": 580031
+        },
+        {
+          "name": 2022,
+          "total": 1637422,
+          "operation": 10237,
+          "energy": 785137,
+          "valueChain": 842048
+        }
+      ],
+      "brandReputation": "Oracle's brand reputation is known for its strong standing in the technology sector, attributed to its innovative solutions and extensive product range. With a mission centered on enabling people to explore data in novel ways, Oracle has established itself as a leader in technology, consistently driving forward with new developments. Its portfolio, which includes database software, cloud infrastructure, and enterprise software products, caters to a broad spectrum of business needs globally. This diverse product offering not only underscores Oracle's market position but also reflects its financial robustness and commitment to innovation",
+      "transparencyLabel": true,
+      "ecoLabel": {
+        "label1": true,
+        "label2": false,
+        "label3": true
+      }
+    },
+    {
+      "name": "IBM",
+      "FootPrintPerRevenue": [
+        { "name": 2020, "total": 18 },
+        { "name": 2021, "total": 7 },
+        { "name": 2022, "total": 7 }
+      ],
+      "carbonFootPrintPerEmployee": [
+        { "name": 2020, "total": 3 },
+        { "name": 2021, "total": 1 },
+        { "name": 2022, "total": 1 }
+      ],
+      "footPrintPerProduciton" : 35,
+      "ghgCarbonEmission": [
+        {
+          "name": 2020,
+          "total": 880188,
+          "operation": 73941,
+          "energy": 530365,
+          "valueChain": 275882
+        },
+        {
+          "name": 2021,
+          "total": 476000,
+          "operation": 79000,
+          "energy": 221000,
+          "valueChain": 176000
+        },
+        {
+          "name": 2022,
+          "total": 431000,
+          "operation": 79000,
+          "energy": 183000,
+          "valueChain": 169000
+        }
+      ],
+      "brandReputation": "IBM maintains a strong brand reputation, highlighted by its significant investments in R&D and a culture of continuous learning for its employees. The company's strategic acquisitions and commitment to sustainability further reinforce its position as a leader in technology and innovation. Despite facing challenges like intense competition and the need for continuous innovation, IBM's focus on integrating sustainability deeply into its operations demonstrates a balance between achieving financial outcomes and positive environmental impacts",
+      "transparencyLabel": true,
+      "ecoLabel": {
+        "label1": true,
+        "label2": false,
+        "label3": true
+      }
+    },
+    {
+      "name": "Accenture",
+      "FootPrintPerRevenue": [
+        { "name": 2020, "total": 46 },
+        { "name": 2021, "total": 6 },
+        { "name": 2022, "total": 6 }
+      ],
+      "carbonFootPrintPerEmployee": [
+        { "name": 2020, "total": 2 },
+        { "name": 2021, "total": 1 },
+        { "name": 2022, "total": 1 }
+      ],
+      "ghgCarbonEmission": [
+        {
+          "name": 2020,
+          "total": 854922,
+          "operation": 13945,
+          "energy": 162983,
+          "valueChain": 677994
+        },
+        {
+          "name": 2021,
+          "total": 332455,
+          "operation": 9250,
+          "energy": 70659,
+          "valueChain": 252546
+        },
+        {
+          "name": 2022,
+          "total": 400457,
+          "operation": 17804,
+          "energy": 8356,
+          "valueChain": 374297
+        }
+      ],
+      "brandReputation": "Accenture is recognized globally for its strong brand reputation, being the most valuable IT services brand for three consecutive years. It's praised for a broad range of services, global reach, innovation, and commitment to sustainability. Despite facing challenges like economic sensitivity and competition, its focus on digital transformation and emerging technologies keeps it competitive​",
+      "transparencyLabel": true,
+      "ecoLabel": {
+        "label1": true,
+        "label2": false,
+        "label3": true
+      }
+    },
+    {
+      "name": "Qualcomm",
+      "footPrintPerProduciton" : 95,
+      "FootPrintPerRevenue": [
+        { "name": 2020, "total": 86 },
+        { "name": 2021, "total": 112 },
+        { "name": 2022, "total": 162 }
+      ],
+      "carbonFootPrintPerEmployee": [
+        { "name": 2020, "total": 81 },
+        { "name": 2021, "total": 79 },
+        { "name": 2022, "total": 131 }
+      ],
+      "ghgCarbonEmission": [
+        {
+          "name": 2020,
+          "total": 3329938,
+          "operation": 123986,
+          "energy": 223821,
+          "valueChain": 2982131
+        },
+        {
+          "name": 2021,
+          "total": 4024505,
+          "operation": 106659,
+          "energy": 171932,
+          "valueChain": 3745914
+        },
+        {
+          "name": 2022,
+          "total": 6659361,
+          "operation": 104850,
+          "energy": 160417,
+          "valueChain": 6394094
+        }
+      ],
+      "brandReputation": "Qualcomm's brand reputation is seen positively, influenced by its technological contributions. Sustainability, increasingly important, affects brand perceptions, emphasizing environmental responsibility. Good brand reputation boosts trust, loyalty, and competitive edge​",
+      "transparencyLabel": true,
+      "ecoLabel": {
+        "label1": true,
+        "label2": false,
+        "label3": true
+      }
+    }
+  ]
+  
