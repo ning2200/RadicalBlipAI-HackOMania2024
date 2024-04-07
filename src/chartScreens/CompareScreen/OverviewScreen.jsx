@@ -4,6 +4,10 @@ import {Select} from "antd"
 import transparent from "./../../Images/transparent.png";
 import BioSuisse from "../../Images/EcoLabels/BioSuisse.png";
 import BioSuisseX from "../../Images//EcoLabels/BioSuisseX.png";
+import CarbonNeutral from "../../Images/EcoLabels/CarbonNeutral.png";
+import CarbonNeutralX from "../../Images/EcoLabels/CarbonNeutralX.png";
+import Organic from "../../Images/EcoLabels/Organic.png";
+import OrganicX from "../../Images/EcoLabels/OrganicX.png";
 import OverviewChart from "../../Charts/OverviewChart/OverviewChart";
 
 const OverviewScreen = () => {
@@ -191,8 +195,9 @@ const OverviewScreen = () => {
           style={{
             color: "#524E4E",
             fontFamily: "Poppins, sans-serif",
-            fontWeight: "400",
-            fontSize: "14px",
+            fontWeight: "500",
+            fontSize: "13px",
+            marginBottom: "10px"
           }}
         >
           Eco Labels
@@ -207,7 +212,7 @@ const OverviewScreen = () => {
           <img
             style={{
               height: "50px",
-              paddingLeft: "10px",
+              paddingLeft: "20px",
             }}
             src={BioSuisse}
             alt="BioSuisse"
@@ -215,10 +220,18 @@ const OverviewScreen = () => {
           <img
             style={{
               height: "50px",
-              paddingLeft: "10px",
+              paddingLeft: "20px",
             }}
-            src={BioSuisseX}
-            alt="BioSuisseX"
+            src={CarbonNeutral}
+            alt="CarbonNeutral"
+          />
+          <img
+            style={{
+              height: "45px",
+              paddingLeft: "20px",
+            }}
+            src={OrganicX}
+            alt="OrganicX"
           />
         </div>
       </div>

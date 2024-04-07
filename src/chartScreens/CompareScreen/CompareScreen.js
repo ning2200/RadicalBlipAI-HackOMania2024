@@ -30,20 +30,21 @@ const CompareScreen = ({
           >
             <div
               style={{
-                fontSize: "18px",
+                fontSize: "15px",
                 fontWeight: "600",
                 fontFamily: "Raleway",
+                color: "#524E4E"
               }}
             >
-              Similar Companies?
+              Similar Companies
             </div>
             <div
               style={{
-                fontSize: "12px",
                 marginTop: "8px",
-                fontWeight: "400",
+                fontWeight: "500",
                 fontFamily: "Raleway",
-                fontSize: "13px",
+                fontSize: "11px",
+                color: "#524E4E"
               }}
             >
               Please select the option you wish to compare with
