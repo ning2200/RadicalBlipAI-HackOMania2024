@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const CompareCompanies = ({ listOfCompanies=[], mockData = [] }) => {
+const CompareCompanies = ({ listOfCompanies , mockData  }) => {
   const [dataToShow, setDataToShow] = useState([]);
 
   const COLORS = ["#B266FF", "#9999FF", "#CC0000"];
