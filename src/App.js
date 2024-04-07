@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import { Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Spin, Flex } from "antd";
 import CompanyPanel from "./CompanyPanel/CompanyPanel";
 import Home from "./Screens/Home";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import CompareScreen from "./chartScreens/CompareScreen/CompareScreen";
-import EcoLogo from './Images/EcoLogo.png';
-import SearchIcon from './Images/SearchIcon.png';
+import companiesSearch from "./companiesSearch.json";
+
+import EcoLogo from "./Images/EcoLogo.png";
+import SearchIcon from "./Images/SearchIcon.png";
 
 import "./App.css";
 
 function App() {
-  const [shouldShow, setShouldShow] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [mockData, setMockData] = useState([
     {
       name: "Company A",
@@ -74,10 +75,6 @@ function App() {
       companyName: "Company F",
       selected: true,
     },
-    // {
-    //   companyName: "Company G",
-    //   selected: true,
-    // },
   ]);
 
   const [buttonView, setListOfButtonView] = useState([
@@ -86,6 +83,8 @@ function App() {
     "Compare",
   ]);
   const [selectedButton, setSelectedButton] = useState("Overview");
+
+  const [homeSearchQuery, setHomeSearchQuery] = useState("");
 
   const onCompanyClick = (companyName) => {
     const copiedCompanies = [...listOfCompanies];
@@ -96,99 +95,200 @@ function App() {
     setListOfCompanies(copiedCompanies);
   };
 
-  return (
-    <>
-        <Home />
-        <div style={{
-              width: "100vw",
-              height: "10vh",
-          }}>
-        <div style={{
-              marginTop: "25px",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-          }}>
-        <img style={{
-              height: "50px",
-          }} src={EcoLogo} alt="Eco Logo" />
-        <div style={{
-              backgroundColor: '#EAEAEA',
-              width: "80vw",
-              borderRadius: "50px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-          }}>
-            <h3 style={{ marginLeft: '25px', color: 'B4B4B4', fontFamily: 'Raleway, sans-serif', fontWeight: "400", fontSize: "13px" }}>What company do you want to check?</h3>
-            <img style={{
-              height: "30px",
-              marginRight: '25px'
-          }} src={SearchIcon} alt="Search Icon" />
-          </div>
-          
-        </div>
-      </div>
-      <div
-        style={{
-          width: "25%",
-          height: "8vh",
-          display: "flex",
-          justifyContent: "space-between",
-          marginLeft: "80px",
-          marginTop: "10px"
-        }}
-      >
-        {buttonView.map((button) => (
-          <Button
-          shape="round" 
-            onClick={() => setSelectedButton(button)}
-            style={{
-              color: selectedButton === button ? "white" : "",
-              background: selectedButton === button ? "#5C5C5C" : "#E6E6E6",
-              height: "40px",
-              paddingLeft: "20px",
-              paddingRight: "20px",
-              fontFamily: 'Poppins, sans-serif', fontWeight: "400", fontSize: "13px"
-            }}
-          >
-            {button}
-          </Button>
-        ))}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          height: "75vh"
-        }}
-      > 
-        <CompareScreen
-          selectedButton={selectedButton}
-          onCompanyClick={onCompanyClick}
-          listOfCompanies={listOfCompanies}
-          mockData={mockData}
-        />
+  const onQuerySearch = (inputValue) => {
+    setHomeSearchQuery(inputValue);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const response = await new Promise((resolve) =>
+          setTimeout(() => {
+            resolve(companiesSearch);
+          }, 1500)
+        );
+        const mockDataResponse = response.map((data) => {
+          const {
+            carbonFootPrintPerEmployee,
+            carbonFootPrintPerRevenue,
+            footPrintPerProduciton,
+            name
+          } = data;
+          return {
+            name: name,
+            carbonFootPrintPerEmployee: carbonFootPrintPerEmployee[0].total,
+            carbonFootPrintPerRevenue: carbonFootPrintPerRevenue[0].total,
+            footPrintPerProduciton: footPrintPerProduciton,
+          };
+        });
+        console.log(mockDataResponse)
+        setMockData(mockDataResponse);
+      } catch (error) {
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [homeSearchQuery]);
+
+  const renderScreen = () => {
+    if (isLoading) {
+      return (
         <div
           style={{
-            background: "#F2F2F2",
-            width: "25%",
+            width: "100vw",
+            height: "100vh",
             display: "flex",
-            borderRadius: "5%",
+            justifyContent: "center",
             flexDirection: "column",
-            boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
-            marginLeft: "20px",
-            height: "75vh"
+            alignItems: "center",
           }}
         >
-          <CompanyPanel
-            companylist={listOfCompanies}
-            onCompanyClick={onCompanyClick}
-          />
+          <Spin
+            tip="Loading"
+            size="large"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <div className="content" />
+          </Spin>
         </div>
-      </div>
-    </>
-  );
+      );
+    } else {
+      return (
+        <>
+          {homeSearchQuery ? (
+            <>
+              <div
+                style={{
+                  width: "100vw",
+                  height: "10vh",
+                }}
+              >
+                <div
+                  style={{
+                    marginTop: "25px",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <img
+                    style={{
+                      height: "50px",
+                    }}
+                    src={EcoLogo}
+                    alt="Eco Logo"
+                  />
+                  <div
+                    style={{
+                      backgroundColor: "#EAEAEA",
+                      width: "80vw",
+                      borderRadius: "50px",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        marginLeft: "25px",
+                        color: "B4B4B4",
+                        fontFamily: "Raleway, sans-serif",
+                        fontWeight: "400",
+                        fontSize: "13px",
+                      }}
+                    >
+                      What company do you want to check?
+                    </h3>
+                    <img
+                      style={{
+                        height: "30px",
+                        marginRight: "25px",
+                      }}
+                      src={SearchIcon}
+                      alt="Search Icon"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  width: "25%",
+                  height: "8vh",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginLeft: "80px",
+                  marginTop: "10px",
+                }}
+              >
+                {buttonView.map((button) => (
+                  <Button
+                    shape="round"
+                    onClick={() => setSelectedButton(button)}
+                    style={{
+                      color: selectedButton === button ? "white" : "",
+                      background:
+                        selectedButton === button ? "#5C5C5C" : "#E6E6E6",
+                      height: "40px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontFamily: "Poppins, sans-serif",
+                      fontWeight: "400",
+                      fontSize: "13px",
+                    }}
+                  >
+                    {button}
+                  </Button>
+                ))}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  height: "75vh",
+                }}
+              >
+                <CompareScreen
+                  selectedButton={selectedButton}
+                  onCompanyClick={onCompanyClick}
+                  listOfCompanies={listOfCompanies}
+                  mockData={mockData}
+                />
+                <div
+                  style={{
+                    background: "#F2F2F2",
+                    width: "25%",
+                    display: "flex",
+                    borderRadius: "5%",
+                    flexDirection: "column",
+                    boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
+                    marginLeft: "20px",
+                    height: "75vh",
+                  }}
+                >
+                  <CompanyPanel
+                    companylist={listOfCompanies}
+                    onCompanyClick={onCompanyClick}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <Home onQuerySearch={onQuerySearch} />
+          )}
+        </>
+      );
+    }
+  };
+
+  return renderScreen();
 }
 
 export default App;

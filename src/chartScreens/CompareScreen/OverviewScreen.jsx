@@ -65,7 +65,6 @@ const OverviewScreen = () => {
   }
 
   const overViewObject = convertOverview(overView)
-  console.log(overViewObject)
 
   return (
     <>
